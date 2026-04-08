@@ -78,7 +78,7 @@ git push -u origin main
    - **Branch:** `main`
    - **Runtime:** `Node`
    - **Build Command:** `npm install`
-   - **Start Command:** `npm start` or `node server.ts`
+   - **Start Command:** `npm start` or `tsx backend/server.ts`
 
 4. **Environment Variables** 
    - Click **Advanced** 

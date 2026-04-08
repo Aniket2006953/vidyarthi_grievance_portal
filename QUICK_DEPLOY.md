@@ -64,7 +64,7 @@ Fill in these settings:
 | **Region** | Choose closest (Asia/India: Singapore/Mumbai) |
 | **Branch** | `main` |
 | **Runtime** | `Node` |
-| **Build Command** | `npm install && npm run build` |
+| **Build Command** | `npm install` |
 | **Start Command** | `npm start` |
 
 ### 3.4: Add Environment Variables
@@ -72,13 +72,25 @@ Scroll down to **Advanced Options** → **Add Environment Variable**
 
 Add these:
 ```
+DATABASE_URL = (your Render PostgreSQL URL - see step below)
 GEMINI_API_KEY = (leave blank or add your key)
 NODE_ENV = production
 JWT_SECRET = college-complaint-secret-key
+PORT = (leave blank - Render sets this automatically)
 ```
 
-### 3.5: Deploy!
-Click **Create Web Service**
+### 3.6: Set Up PostgreSQL Database
+1. In Render Dashboard, click **New +** → **PostgreSQL**
+2. Name it: `vidyarthi-db`
+3. Click **Create Database**
+4. Wait for it to be ready (2-3 minutes)
+5. Go to your database → **Connections** tab
+6. Copy the **External Database URL**
+7. Go back to your Web Service → **Environment**
+8. Add `DATABASE_URL` = [paste the PostgreSQL URL]
+
+### 3.7: Deploy!
+Click **Create Web Service** (or **Manual Deploy** → **Deploy latest commit** if already created)
 
 **Wait 2-3 minutes...**
 
