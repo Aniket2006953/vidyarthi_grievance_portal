@@ -5,7 +5,8 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const db = new Database('college_complaints.db');
+const dbPath = process.env.DB_PATH || 'college_complaints.db';
+const db = new Database(dbPath);
 
 // Initialize tables
 db.exec(`

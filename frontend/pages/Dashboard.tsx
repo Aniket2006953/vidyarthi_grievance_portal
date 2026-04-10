@@ -104,8 +104,8 @@ export default function Dashboard() {
   const filteredComplaints = complaints.filter(c => {
     const matchesSearch = c.title.toLowerCase().includes(search.toLowerCase()) || 
                          c.description.toLowerCase().includes(search.toLowerCase()) ||
-                         (c.student_name?.toLowerCase().includes(search.toLowerCase())) ||
-                         (c.roll_number?.toLowerCase().includes(search.toLowerCase()));
+                         (c.student_name && c.student_name.toLowerCase().includes(search.toLowerCase())) ||
+                         (c.roll_number && c.roll_number.toLowerCase().includes(search.toLowerCase()));
     const matchesCategory = filterCategory === 'All' || c.category === filterCategory;
     const matchesStatus = filterStatus === 'All' || c.status === filterStatus;
     const matchesDepartment = filterDepartment === 'All' || c.department === filterDepartment;
@@ -277,7 +277,7 @@ export default function Dashboard() {
                       <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-slate-500 text-sm">
                         <span className="flex items-center gap-1">
                           <Calendar className="w-4 h-4" />
-                          {format(new Date(complaint.created_at), 'MMM d, yyyy')}
+                          {complaint.created_at ? format(new Date(complaint.created_at), 'MMM d, yyyy') : 'Unknown Date'}
                         </span>
                         {user?.role === 'admin' && (
                           <>
